@@ -1,0 +1,3 @@
+[workspace]
+members = ["libretro-frontend-rs", "libretro-frontend-napi"]
+resolver = "2"

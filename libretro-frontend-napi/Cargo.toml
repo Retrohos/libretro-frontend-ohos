@@ -3,4 +3,15 @@ name = "libretro-frontend-napi"
 version = "0.1.0"
 edition = "2021"
 
+[lib]
+crate-type = ["cdylib"]
+
 [dependencies]
+napi-ohos        = { version = "1.0.0-beta.7" }
+napi-derive-ohos = { version = "1.0.0-beta.7" }
+
+[build-dependencies]
+napi-build-ohos = { version = "1.0.0-beta.7" }
+
+[profile.release]
+lto = true

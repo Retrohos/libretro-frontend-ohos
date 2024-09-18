@@ -18,14 +18,15 @@ fn main() {
         .unwrap();
 
     // use bindgen to generate the bindings into "src/libretro.rs"
-    let bindings = bindgen::Builder::default()
+    bindgen::Builder::default()
+        .raw_line("#![allow(non_upper_case_globals)]")
+        .raw_line("#![allow(non_camel_case_types)]")
+        .raw_line("#![allow(non_snake_case)]")
+        .raw_line("#![allow(dead_code)]")
         .header(LIBRETRO_HEADER_FILE)
         .parse_callbacks(Box::new(bindgen::CargoCallbacks::new()))
         .generate()
-        .expect("Unable to generate bindings");
-
-    // Write the bindings to the $OUT_DIR/bindings.rs file.
-    bindings
+        .expect("Unable to generate bindings")
         .write_to_file(LIBRETRO_BINDINGS_FILE)
         .expect("Couldn't write bindings!");
 }

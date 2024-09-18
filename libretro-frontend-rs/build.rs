@@ -24,6 +24,7 @@ fn main() {
         .raw_line("#![allow(non_snake_case)]")
         .raw_line("#![allow(dead_code)]")
         .header(LIBRETRO_HEADER_FILE)
+        .rustified_enum(".*")
         .parse_callbacks(Box::new(bindgen::CargoCallbacks::new()))
         .generate()
         .expect("Unable to generate bindings")

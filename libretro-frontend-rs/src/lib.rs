@@ -1,1 +1,1 @@
-mod libretro;
+mod core;

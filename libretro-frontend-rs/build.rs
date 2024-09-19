@@ -4,7 +4,11 @@
 fn main() {
     const LIBRETRO_HEADER_URL: &str = "https://raw.githubusercontent.com/libretro/libretro-common/master/include/libretro.h";
     const LIBRETRO_HEADER_FILE: &str = "include/libretro.h";
-    const LIBRETRO_BINDINGS_FILE: &str = "src/libretro.rs";
+    const LIBRETRO_BINDINGS_FILE: &str = "src/core/libretro.rs";
+
+    if let Ok(_) = std::fs::metadata(LIBRETRO_HEADER_FILE) {
+        return;
+    }
 
     // create the include directory
     std::fs::create_dir_all("include").unwrap();
